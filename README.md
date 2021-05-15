@@ -18,7 +18,7 @@ The goal of this configuration is to get code linting and formatting up and runn
 
 To install the package, run:
 
-```console
+```shell
 $ npm install -D eslint-config-acme
 ```
 
@@ -36,7 +36,7 @@ This will install the shared config, as well as its peer dependencies:
 
 **NOTE:** if you are on an older version of `npm` (`<7.0.0`), you will need to install these manually:
 
-```console
+```shell
 $ npx install-peerdeps -D eslint-config-acme
 ```
 
@@ -44,7 +44,7 @@ $ npx install-peerdeps -D eslint-config-acme
 
 To start using this shared config, add `eslint-config-acme` (or just `acme`) to either your `package.json`:
 
-```json
+```jsx
 // package.json
 {
   "eslintConfig": {
@@ -55,7 +55,7 @@ To start using this shared config, add `eslint-config-acme` (or just `acme`) to 
 
 or the `.eslintrc` file:
 
-```json
+```jsx
 // .eslintrc
 {
   "extends": ["acme"]
@@ -66,7 +66,7 @@ or the `.eslintrc` file:
 
 This config supports Prettier integration out of the box. Rules that may conflict with ESLint are disabled via recommended configuration in [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier), and the following overrides:
 
-```json
+```jsx
 {
   "printWidth": 90,
   "singleQuote": true
@@ -75,7 +75,7 @@ This config supports Prettier integration out of the box. Rules that may conflic
 
 If you wish to override any other [Prettier options](https://prettier.io/docs/en/options.html), you can do so by specifying them under `prettier/prettier` rule in your ESLint config file. For example:
 
-```json
+```jsx
 // .eslintrc
 {
   "extends": "@acme",
@@ -94,7 +94,7 @@ If you wish to override any other [Prettier options](https://prettier.io/docs/en
 
 Add the following to your `package.json` file to define a script that will lint all known files and output the results:
 
-```json
+```jsx
 "scripts": {
   // ..
   "lint": "eslint --ignore-path .gitignore"
@@ -104,7 +104,7 @@ Add the following to your `package.json` file to define a script that will lint 
 
 To automatically fix all fixable issues, you can add the following script to your `package.json` as well (in addition to above):
 
-```json
+```jsx
 "scripts": {
   // ..
   "lint:fix": "eslint . --fix"
