@@ -64,16 +64,9 @@ or the `.eslintrc` file:
 
 ## Prettier
 
-This config supports Prettier integration out of the box. Rules that may conflict with ESLint are disabled via recommended configuration in [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier), and the following overrides:
+This config supports Prettier integration out of the box. Rules that may conflict with ESLint are disabled via recommended configuration in [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier).
 
-```jsx
-{
-  "printWidth": 90,
-  "singleQuote": true
-}
-```
-
-If you wish to override any other [Prettier options](https://prettier.io/docs/en/options.html), you can do so by specifying them under `prettier/prettier` rule in your ESLint config file. For example:
+If you wish to override any [Prettier options](https://prettier.io/docs/en/options.html), you can do so by specifying them under `prettier/prettier` rule in your ESLint config file. For example:
 
 ```jsx
 // .eslintrc
@@ -90,6 +83,8 @@ If you wish to override any other [Prettier options](https://prettier.io/docs/en
 }
 ```
 
+Make sure that these rules match the options specified in your `.prettierrc` file.
+
 ## Adding Scripts
 
 Add the following to your `package.json` file to define a script that will lint all known files and output the results:
@@ -97,17 +92,17 @@ Add the following to your `package.json` file to define a script that will lint 
 ```jsx
 "scripts": {
   // ..
-  "lint": "eslint --ignore-path .gitignore"
+  "lint": "eslint --ignore-path .gitignore ."
   // ..
 }
 ```
 
-To automatically fix all fixable issues, you can add the following script to your `package.json` as well (in addition to above):
+To fix all automatically-fixable issues, you can add the following script to your `package.json` as well (in addition to above):
 
 ```jsx
 "scripts": {
   // ..
-  "lint:fix": "eslint . --fix"
+  "lint:fix": "eslint --ignore-path .gitignore --fix ."
   // ..
 }
 ```
