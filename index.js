@@ -29,5 +29,11 @@ module.exports = {
       // Tells eslint-plugin-react to automatically detect the version of React to use
       version: 'detect',
     },
+    'import/resolver': {
+      alias: {
+        map: [['@', './src']],
+        extensions: ['.js', '.jsx'],
+      },
+    },
   },
 };

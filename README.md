@@ -27,6 +27,7 @@ This will install the shared config, as well as its peer dependencies:
 - eslint
 - eslint-config-airbnb
 - eslint-config-prettier
+- eslint-import-resolver-alias
 - eslint-plugin-import
 - eslint-plugin-jsx-a11y
 - eslint-plugin-prettier
@@ -62,6 +63,52 @@ or the `.eslintrc` file:
 }
 ```
 
+## Import Alias
+
+This config provides a default import alias resolver for `eslint-plugin-import` to support shorthand imports of local modules:
+
+```json
+{
+  "import/resolver": {
+    "alias": {
+      "map": [["@", "./src"]],
+      "extensions": [".js", ".jsx"]
+    }
+  }
+}
+```
+
+This will allow you to write imports like this anywhere in your code:
+
+```jsx
+import Foo from '@/components/foo';
+```
+
+instead of relative paths:
+
+```jsx
+import Foo from '../../components/foo';
+```
+
+when using [absolute imports and module path aliases](https://nextjs.org/docs/advanced-features/module-path-aliases) in **Next.js**.
+
+This can also be overriden in your local `.eslintrc` file, if needed:
+
+```jsx
+// .eslintrc
+{
+  "extends": ["acme"],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [["@", "./lib"]],
+        "extensions": [".js"]
+      }
+    }
+  }
+}
+```
+
 ## Prettier
 
 This config supports Prettier integration out of the box. Rules that may conflict with ESLint are disabled via recommended configuration in [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier).
@@ -71,12 +118,12 @@ If you wish to override any [Prettier options](https://prettier.io/docs/en/optio
 ```jsx
 // .eslintrc
 {
-  "extends": "@acme",
+  "extends": ["@acme"],
   "rules": {
     "prettier/prettier": [
       "error",
       {
-        "printWidth": 110
+        "printWidth": 90
       }
     ]
   }
@@ -90,20 +137,22 @@ Make sure that these rules match the options specified in your `.prettierrc` fil
 Add the following to your `package.json` file to define a script that will lint all known files and output the results:
 
 ```jsx
-"scripts": {
-  // ..
-  "lint": "eslint --ignore-path .gitignore ."
-  // ..
+// package.json
+{
+  "scripts": {
+    "lint": "eslint --ignore-path .gitignore ."
+  }
 }
 ```
 
 To fix all automatically-fixable issues, you can add the following script to your `package.json` as well (in addition to above):
 
 ```jsx
-"scripts": {
-  // ..
-  "lint:fix": "eslint --ignore-path .gitignore --fix ."
-  // ..
+// package.json
+{
+  "scripts": {
+    "lint:fix": "eslint --ignore-path .gitignore --fix ."
+  }
 }
 ```
 
@@ -115,18 +164,16 @@ There is a [known issue](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/is
 
 Because of this, the [standard usage](https://nextjs.org/docs/api-reference/next/link) of Next.js `<Link>` component will result in an error for the `jsx-a11y/anchor-is-valid` rule. Until the Next.js API can be updated to a more standard pattern, `eslint-config-acme` overrides this rule as suggested in [this issue](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402#issuecomment-368305051):
 
-```jsx
+```json
 {
-  // ...
-  'jsx-a11y/anchor-is-valid': [
-    'error',
+  "jsx-a11y/anchor-is-valid": [
+    "error",
     {
-      components: ['Link'],
-      specialLink: ['hrefLeft', 'hrefRight'],
-      aspects: ['invalidHref', 'preferButton'],
-    },
-  ],
-  // ...
+      "components": ["Link"],
+      "specialLink": ["hrefLeft", "hrefRight"],
+      "aspects": ["invalidHref", "preferButton"]
+    }
+  ]
 }
 ```
 
