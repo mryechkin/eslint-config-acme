@@ -33,9 +33,11 @@ This will install the shared config, as well as its peer dependencies:
 - eslint-plugin-prettier
 - eslint-plugin-react
 - eslint-plugin-react-hooks
+- eslint-plugin-simple-import-sort
 - prettier
+- prettier-plugin-tailwindcss
 
-**NOTE:** if you are on an older version of `npm` (`<7.0.0`), you will need to install these manually:
+**NOTE:** if you are on NPM <7, you will need to install these manually:
 
 ```shell
 $ npx install-peerdeps -D eslint-config-acme
