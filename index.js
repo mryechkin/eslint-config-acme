@@ -18,7 +18,7 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['simple-import-sort', 'import'],
+  plugins: ['simple-import-sort', 'import', 'tailwindcss'],
   rules: {
     ...base,
     ...next,
