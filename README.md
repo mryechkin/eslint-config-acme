@@ -34,6 +34,7 @@ This will install the shared config, as well as its peer dependencies:
 - eslint-plugin-react
 - eslint-plugin-react-hooks
 - eslint-plugin-simple-import-sort
+- eslint-plugin-tailwindcss
 - prettier
 - prettier-plugin-tailwindcss
 
@@ -120,7 +121,7 @@ If you wish to override any [Prettier options](https://prettier.io/docs/en/optio
 ```jsx
 // .eslintrc
 {
-  "extends": ["@acme"],
+  "extends": ["acme"],
   "rules": {
     "prettier/prettier": [
       "error",

@@ -3,7 +3,12 @@ const next = require('./lib/next.js');
 const react = require('./lib/react.js');
 
 module.exports = {
-  extends: ['airbnb', 'airbnb/hooks', 'plugin:prettier/recommended'],
+  extends: [
+    'airbnb',
+    'airbnb/hooks',
+    'plugin:prettier/recommended',
+    'plugin:tailwindcss/recommended',
+  ],
   env: {
     browser: true,
     commonjs: true,
