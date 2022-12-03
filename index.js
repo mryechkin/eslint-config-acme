@@ -1,5 +1,4 @@
 const base = require('./lib/base.js');
-const next = require('./lib/next.js');
 const react = require('./lib/react.js');
 
 module.exports = {
@@ -26,7 +25,6 @@ module.exports = {
   plugins: ['simple-import-sort', 'import', 'tailwindcss'],
   rules: {
     ...base,
-    ...next,
     ...react,
   },
   settings: {
@@ -36,7 +34,7 @@ module.exports = {
     },
     'import/resolver': {
       alias: {
-        map: [['@', './src']],
+        map: [['src', './src']],
         extensions: ['.js', '.jsx'],
       },
     },

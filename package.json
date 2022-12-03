@@ -1,10 +1,14 @@
 {
   "name": "eslint-config-acme",
-  "version": "1.4.0",
-  "description": "ESLint + Prettier config for React (Next.js)",
+  "version": "2.0.0",
+  "description": "ESLint + Prettier config for React",
   "main": "index.js",
+  "engines": {
+    "node": ">=15.0.0"
+  },
   "files": [
     "LICENSE",
+    "CHANGELOG.md",
     "README.md",
     "index.js",
     "lib"
@@ -14,31 +18,31 @@
     "lint:fix": "eslint --fix"
   },
   "peerDependencies": {
-    "eslint": "^8.18.0",
+    "eslint": "^8.29.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-tailwindcss": "^3.6.0",
-    "prettier": "^2.7.1",
-    "prettier-plugin-tailwindcss": "^0.1.11"
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "eslint-plugin-tailwindcss": "^3.7.1",
+    "prettier": "^2.8.0",
+    "prettier-plugin-tailwindcss": "^0.2.0"
   },
   "keywords": [
-    "config",
-    "ecmascript",
     "eslint",
     "eslintconfig",
+    "config",
     "javascript",
-    "lint",
-    "nextjs",
     "prettier"
   ],
-  "author": "Mykhaylo Ryechkin <mykhaylo.ryechkin+npm@gmail.com>",
+  "author": {
+    "name": "Mykhaylo Ryechkin",
+    "url": "https://misha.wtf"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",

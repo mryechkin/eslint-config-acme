@@ -2,15 +2,13 @@
   <img width="500" src="assets/banner.png" alt="banner" />
 </h1>
 
-# ESLint + Prettier Config for React (Next.js)
+# ESLint + Prettier Config for React
 
-`eslint-config-acme`
-
-> Shareable config for [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/), aimed primarily to be used in [Next.js](https://nextjs.org) React projects.
+> Shareable config for [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/), aimed primarily to be used in React projects.
 
 ## Overview
 
-This configuration extends [airbnb](https://www.npmjs.com/package/eslint-config-airbnb) ESLint config, with [airbnb/hooks](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb#eslint-config-airbnbhooks) enabled, and Prettier integration via the ESLint [plugin](https://github.com/prettier/eslint-plugin-prettier). Additionally, a few default rules are overriden to provide a more relaxed development experience in Next.js applications out of the box.
+This configuration extends [Airbnb](https://www.npmjs.com/package/eslint-config-airbnb) ESLint config, with [`eslint-config-airbnb/hooks`](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb#eslint-config-airbnbhooks) enabled, and Prettier integration via the ESLint [plugin](https://github.com/prettier/eslint-plugin-prettier). Additionally, a few default rules are overriden to provide a more relaxed development experience in Next.js applications out of the box.
 
 The goal of this configuration is to get code linting and formatting up and running as quickly as possible in a modern development environment, without sacrificing cleanliness and readability, and having to configure ESLint + Prettier from scratch every time.
 
@@ -74,7 +72,7 @@ This config provides a default import alias resolver for `eslint-plugin-import` 
 {
   "import/resolver": {
     "alias": {
-      "map": [["@", "./src"]],
+      "map": [["src", "./src"]],
       "extensions": [".js", ".jsx"]
     }
   }
@@ -84,7 +82,7 @@ This config provides a default import alias resolver for `eslint-plugin-import` 
 This will allow you to write imports like this anywhere in your code:
 
 ```jsx
-import Foo from '@/components/foo';
+import Foo from 'src/components/foo';
 ```
 
 instead of relative paths:
@@ -95,7 +93,7 @@ import Foo from '../../components/foo';
 
 when using [absolute imports and module path aliases](https://nextjs.org/docs/advanced-features/module-path-aliases) in **Next.js**.
 
-This can also be overriden in your local `.eslintrc` file, if needed:
+This can also be overridden in your local `.eslintrc` file, if needed:
 
 ```jsx
 // .eslintrc
@@ -104,7 +102,10 @@ This can also be overriden in your local `.eslintrc` file, if needed:
   "settings": {
     "import/resolver": {
       "alias": {
-        "map": [["@", "./lib"]],
+        "map": [
+          ["lib", "./lib"],
+          ["src", "./some/other/src"]
+        ],
         "extensions": [".js"]
       }
     }
@@ -160,29 +161,6 @@ To fix all automatically-fixable issues, you can add the following script to you
 ```
 
 Note that you can update the above scripts as you see fit, this is just an example. See ESLint [CLI reference](https://eslint.org/docs/user-guide/command-line-interface) for more details.
-
-## Note on Next.js Link component
-
-There is a [known issue](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402) with Next.js's decision to construct internal links by nesting an href-free `<a>` tag inside of a `<Link>` component. Next.js is also [aware of the issue](https://github.com/vercel/next.js/issues/5533) and has an [RFC](https://github.com/vercel/next.js/discussions/8207) working towards a solution.
-
-Because of this, the [standard usage](https://nextjs.org/docs/api-reference/next/link) of Next.js `<Link>` component will result in an error for the `jsx-a11y/anchor-is-valid` rule. Until the Next.js API can be updated to a more standard pattern, `eslint-config-acme` overrides this rule as suggested in [this issue](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402#issuecomment-368305051):
-
-```json
-{
-  "jsx-a11y/anchor-is-valid": [
-    "error",
-    {
-      "components": ["Link"],
-      "specialLink": ["hrefLeft", "hrefRight"],
-      "aspects": ["invalidHref", "preferButton"]
-    }
-  ]
-}
-```
-
-Please be aware, however, that this workaround also **disables the check for `href` attribute altogether** for regular `<a>` elements. Keep that in mind to ensure you're not breaking accessibility.
-
-(check out [@axe-core/react](https://www.npmjs.com/package/@axe-core/react) if you'd like an additional layer of accessibility checking)
 
 ## License
 
