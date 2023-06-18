@@ -162,6 +162,10 @@ To fix all automatically-fixable issues, you can add the following script to you
 
 Note that you can update the above scripts as you see fit, this is just an example. See ESLint [CLI reference](https://eslint.org/docs/user-guide/command-line-interface) for more details.
 
+## Author
+
+[Mykhaylo Ryechkin](https://github.com/mryechkin)
+
 ## License
 
-Licensed under MIT License.
+[MIT](https://choosealicense.com/licenses/mit/)
