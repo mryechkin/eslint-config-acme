@@ -22,19 +22,20 @@ $ npm install -D eslint-config-acme
 
 This will install the shared config, as well as its peer dependencies:
 
-- eslint
-- eslint-config-airbnb
-- eslint-config-prettier
-- eslint-import-resolver-alias
-- eslint-plugin-import
-- eslint-plugin-jsx-a11y
-- eslint-plugin-prettier
-- eslint-plugin-react
-- eslint-plugin-react-hooks
-- eslint-plugin-simple-import-sort
-- eslint-plugin-tailwindcss
-- prettier
-- prettier-plugin-tailwindcss
+- [eslint](https://github.com/eslint/eslint)
+- [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)
+- [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+- [eslint-import-resolver-alias](https://github.com/johvin/eslint-import-resolver-alias)
+- [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import)
+- [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
+- [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
+- [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react)
+- [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
+- [eslint-plugin-simple-import-sort](https://github.com/lydell/eslint-plugin-simple-import-sort)
+- [eslint-plugin-sort-destructure-keys](https://github.com/mthadley/eslint-plugin-sort-destructure-keys)
+- [eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)
+- [prettier](https://github.com/prettier/prettier)
+- [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
 
 **NOTE:** if you are on NPM <7, you will need to install these manually:
 
