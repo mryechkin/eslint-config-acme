@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-acme",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "ESLint + Prettier config for React",
   "main": "index.js",
   "engines": {
@@ -30,8 +30,8 @@
     "eslint-plugin-simple-import-sort": "^10.0",
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "eslint-plugin-tailwindcss": "^3.13",
-    "prettier": "^3.0.1",
-    "prettier-plugin-tailwindcss": "^0.4.1"
+    "prettier": "^3",
+    "prettier-plugin-tailwindcss": "^0.5"
   },
   "keywords": [
     "eslint",
