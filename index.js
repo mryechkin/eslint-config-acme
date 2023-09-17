@@ -33,9 +33,9 @@ module.exports = {
       version: 'detect',
     },
     'import/resolver': {
-      alias: {
-        map: [['src', './src']],
-        extensions: ['.js', '.jsx'],
+      'eslint-import-resolver-custom-alias': {
+        alias: { src: './src' },
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
   },

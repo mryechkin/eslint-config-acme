@@ -1,11 +1,28 @@
 {
   "name": "eslint-config-acme",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "ESLint + Prettier config for React",
-  "main": "index.js",
-  "engines": {
-    "node": ">=15.0.0"
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "config",
+    "javascript",
+    "prettier"
+  ],
+  "homepage": "https://github.com/mryechkin/eslint-config-acme#readme",
+  "bugs": {
+    "url": "https://github.com/mryechkin/eslint-config-acme/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mryechkin/eslint-config-acme.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mykhaylo Ryechkin",
+    "url": "https://github.com/mryechkin"
+  },
+  "main": "index.js",
   "files": [
     "LICENSE",
     "CHANGELOG.md",
@@ -21,7 +38,7 @@
     "eslint": "^8.46",
     "eslint-config-airbnb": "^19.0",
     "eslint-config-prettier": "^8.10",
-    "eslint-import-resolver-alias": "^1.1",
+    "eslint-import-resolver-custom-alias": "^1.3.2",
     "eslint-plugin-import": "^2.26",
     "eslint-plugin-jsx-a11y": "^6.6",
     "eslint-plugin-prettier": "^5.0",
@@ -33,24 +50,7 @@
     "prettier": "^3",
     "prettier-plugin-tailwindcss": "^0.5"
   },
-  "keywords": [
-    "eslint",
-    "eslintconfig",
-    "config",
-    "javascript",
-    "prettier"
-  ],
-  "author": {
-    "name": "Mykhaylo Ryechkin",
-    "url": "https://github.com/mryechkin"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mryechkin/eslint-config-acme.git"
-  },
-  "bugs": {
-    "url": "https://github.com/mryechkin/eslint-config-acme/issues"
-  },
-  "homepage": "https://github.com/mryechkin/eslint-config-acme#readme"
+  "engines": {
+    "node": ">=15.0.0"
+  }
 }

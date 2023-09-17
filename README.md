@@ -25,7 +25,7 @@ This will install the shared config, as well as its peer dependencies:
 - [eslint](https://github.com/eslint/eslint)
 - [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)
 - [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
-- [eslint-import-resolver-alias](https://github.com/johvin/eslint-import-resolver-alias)
+- [eslint-import-resolver-custom-alias](https://github.com/laysent/eslint-import-resolver-custom-alias)
 - [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import)
 - [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
 - [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
@@ -72,9 +72,9 @@ This config provides a default import alias resolver for `eslint-plugin-import` 
 ```json
 {
   "import/resolver": {
-    "alias": {
-      "map": [["src", "./src"]],
-      "extensions": [".js", ".jsx"]
+    "eslint-import-resolver-custom-alias": {
+      "alias": { "src": "./src" },
+      "extensions": [".js", ".jsx", ".ts", ".tsx"]
     }
   }
 }
@@ -102,12 +102,12 @@ This can also be overridden in your local `.eslintrc` file, if needed:
   "extends": ["acme"],
   "settings": {
     "import/resolver": {
-      "alias": {
-        "map": [
-          ["lib", "./lib"],
-          ["src", "./some/other/src"]
-        ],
-        "extensions": [".js"]
+      "eslint-import-resolver-custom-alias": {
+        "alias": {
+          "lib": "./lib",
+          "src": "./some/other/src"
+        },
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".mdx"]
       }
     }
   }
