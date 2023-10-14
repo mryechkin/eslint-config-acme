@@ -1,0 +1,22 @@
+{
+  "printWidth": 90,
+  "singleQuote": true,
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-packagejson",
+    "prettier-plugin-tailwindcss"
+  ],
+  "importOrder": [
+    "<TYPES>",
+    "<TYPES>^[.]",
+    "",
+    "<BUILT_IN_MODULES>",
+    "",
+    "^react$",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^(src|~)(/.*)$",
+    "",
+    "^[.]"
+  ]
+}

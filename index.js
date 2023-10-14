@@ -22,7 +22,7 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['import', 'simple-import-sort', 'sort-destructure-keys', 'tailwindcss'],
+  plugins: ['import', 'sort-destructure-keys', 'tailwindcss'],
   rules: {
     ...base,
     ...react,

@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-acme",
-  "version": "2.3.0",
+  "version": "3.0.1",
   "description": "ESLint + Prettier config for React",
   "keywords": [
     "eslint",
@@ -22,11 +22,16 @@
     "name": "Mykhaylo Ryechkin",
     "url": "https://github.com/mryechkin"
   },
+  "exports": {
+    ".": "./index.js",
+    "./prettier": "./.prettierrc.json"
+  },
   "main": "index.js",
   "files": [
     "LICENSE",
     "CHANGELOG.md",
     "README.md",
+    ".prettierrc.json",
     "index.js",
     "lib"
   ],
@@ -34,20 +39,25 @@
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "eslint --fix"
   },
+  "devDependencies": {
+    "prettier": "^3.0.3",
+    "prettier-plugin-packagejson": "^2.4.6"
+  },
   "peerDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.1",
     "eslint": "^8.46",
     "eslint-config-airbnb": "^19.0",
-    "eslint-config-prettier": "^8.10",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-custom-alias": "^1.3.2",
-    "eslint-plugin-import": "^2.26",
-    "eslint-plugin-jsx-a11y": "^6.6",
+    "eslint-plugin-import": "^2.28",
+    "eslint-plugin-jsx-a11y": "^6.7",
     "eslint-plugin-prettier": "^5.0",
     "eslint-plugin-react": "^7.33",
     "eslint-plugin-react-hooks": "^4.6",
-    "eslint-plugin-simple-import-sort": "^10.0",
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "eslint-plugin-tailwindcss": "^3.13",
     "prettier": "^3",
+    "prettier-plugin-packagejson": "^2.4",
     "prettier-plugin-tailwindcss": "^0.5"
   },
   "engines": {

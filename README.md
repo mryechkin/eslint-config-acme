@@ -31,10 +31,11 @@ This will install the shared config, as well as its peer dependencies:
 - [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
 - [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react)
 - [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
-- [eslint-plugin-simple-import-sort](https://github.com/lydell/eslint-plugin-simple-import-sort)
 - [eslint-plugin-sort-destructure-keys](https://github.com/mthadley/eslint-plugin-sort-destructure-keys)
 - [eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)
 - [prettier](https://github.com/prettier/prettier)
+- [@ianvs/prettier-plugin-sort-imports](https://github.com/IanVS/prettier-plugin-sort-imports)
+- [prettier-plugin-packagejson](https://github.com/matzkoh/prettier-plugin-packagejson)
 - [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
 
 **NOTE:** if you are on NPM <7, you will need to install these manually:
@@ -114,6 +115,56 @@ This can also be overridden in your local `.eslintrc` file, if needed:
 }
 ```
 
+## Import Sorting
+
+Import statement sorting is enabled via [`@ianvs/prettier-plugin-sort-imports`](https://github.com/IanVS/prettier-plugin-sort-imports), with the following default `importOrder` set:
+
+```json
+{
+  "importOrder": [
+    "<TYPES>",
+    "<TYPES>^[.]",
+    "",
+    "<BUILT_IN_MODULES>",
+    "",
+    "^react$",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^(src|~)(/.*)$",
+    "",
+    "^[.]"
+  ]
+}
+```
+
+This will take import statements like these:
+
+```js
+import fs from 'node:fs';
+
+import { module } from 'package-name';
+
+import foo from 'src/foo';
+
+import main from '../index';
+import { bar } from './bar';
+```
+
+And turn them into this:
+
+```js
+import fs from 'node:fs';
+
+import { module } from 'package-name';
+
+import foo from 'src/foo';
+
+import main from '../index';
+import { bar } from './bar';
+```
+
+See the plugin [docs](https://github.com/IanVS/prettier-plugin-sort-imports#importorder) for more information on how to customize this option.
+
 ## Prettier
 
 This config supports Prettier integration out of the box. Rules that may conflict with ESLint are disabled via recommended configuration in [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier).
@@ -135,7 +186,45 @@ If you wish to override any [Prettier options](https://prettier.io/docs/en/optio
 }
 ```
 
-Make sure that these rules match the options specified in your `.prettierrc` file.
+Make sure that these rules match the options specified in your Prettier config file.
+
+### Shared Config
+
+This package provides a shared Prettier config for use alongside the ESLint one.
+
+To enable, create a Prettier config file (`.prettierrc`, `.prettierrc.js`, etc.), and import the shared Prettier config.
+
+**JSON:**
+
+```json
+// .prettierrc
+"eslint-config-acme/prettier"
+```
+
+**CommonJS:**
+
+```jsx
+// .prettierrc.js
+/** @type {import("prettier").Config} */
+const acme = require('eslint-config-acme/prettier');
+
+module.exports = acme;
+```
+
+If you'd like to override any of the default options, you can use the spread operator (`...`) to extend the default config:
+
+```jsx
+// .prettierrc.js
+/** @type {import("prettier").Config} */
+const acme = require('eslint-config-acme/prettier');
+
+const config = {
+  ...acme,
+  singleQuote: false,
+};
+
+module.exports = config;
+```
 
 ## Adding Scripts
 
