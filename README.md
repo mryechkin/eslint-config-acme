@@ -153,14 +153,11 @@ Import statement sorting is enabled via [`@ianvs/prettier-plugin-sort-imports`](
 This will take import statements like these:
 
 ```js
-import fs from 'node:fs';
-
-import { module } from 'package-name';
-
 import foo from '@/foo';
-
 import main from '../index';
+import fs from 'node:fs';
 import { bar } from './bar';
+import { module } from 'package-name';
 ```
 
 And turn them into this:
