@@ -8,7 +8,7 @@
 
 ## Overview
 
-This configuration extends [Airbnb](https://www.npmjs.com/package/eslint-config-airbnb) ESLint config, with [`eslint-config-airbnb/hooks`](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb#eslint-config-airbnbhooks) enabled, and Prettier integration via the ESLint [plugin](https://github.com/prettier/eslint-plugin-prettier). Additionally, a few default rules are overriden to provide a more relaxed development experience in Next.js applications out of the box.
+This configuration extends [Airbnb](https://www.npmjs.com/package/eslint-config-airbnb) ESLint config, with [`eslint-config-airbnb/hooks`](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb#eslint-config-airbnbhooks) enabled, and Prettier integration via the ESLint [plugin](https://github.com/prettier/eslint-plugin-prettier). Additionally, a few default rules are overridden to provide a more relaxed development experience in Next.js applications out of the box.
 
 The goal of this configuration is to get code linting and formatting up and running as quickly as possible in a modern development environment, without sacrificing cleanliness and readability, and having to configure ESLint + Prettier from scratch every time.
 
@@ -28,7 +28,6 @@ This will install the shared config, as well as its peer dependencies:
 - [eslint-import-resolver-custom-alias](https://github.com/laysent/eslint-import-resolver-custom-alias)
 - [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import)
 - [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
-- [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
 - [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react)
 - [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
 - [eslint-plugin-sort-destructure-keys](https://github.com/mthadley/eslint-plugin-sort-destructure-keys)
@@ -57,7 +56,7 @@ To start using this shared config, add `eslint-config-acme` (or just `acme`) to 
 }
 ```
 
-or the `.eslintrc` file:
+or the `.eslintrc` [configuration file](https://eslint.org/docs/latest/use/configure/configuration-files):
 
 ```jsx
 // .eslintrc
@@ -65,6 +64,9 @@ or the `.eslintrc` file:
   "extends": ["acme"]
 }
 ```
+
+> **NOTE:**
+> The new [flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new) format is not yet supported, as there is an [upstream dependency](https://github.com/airbnb/javascript/issues/2804) for its support in `eslint-config-airbnb`.
 
 ## Import Alias
 
@@ -74,28 +76,39 @@ This config provides a default import alias resolver for `eslint-plugin-import` 
 {
   "import/resolver": {
     "eslint-import-resolver-custom-alias": {
-      "alias": { "src": "./src" },
+      "alias": {
+        "~": "./src",
+        "@": "./src",
+        "#": "./src",
+        "src": "./src"
+      },
       "extensions": [".js", ".jsx", ".ts", ".tsx"]
     }
   }
 }
 ```
 
-This will allow you to write imports like this anywhere in your code:
+This maps any of the above shorthands (`~`, `@`, `#`, `src`) to the `./src` directory in your project, and allows you to write imports like this anywhere in your code:
 
 ```jsx
-import Foo from 'src/components/foo';
+import Foo from '~/components/Foo';
+// or
+import Foo from '@/components/Foo';
+// or
+import Foo from '#/components/Foo';
+// or
+import Foo from 'src/components/Foo';
 ```
 
 instead of relative paths:
 
 ```jsx
-import Foo from '../../components/foo';
+import Foo from '../../components/Foo';
 ```
 
-when using [absolute imports and module path aliases](https://nextjs.org/docs/advanced-features/module-path-aliases) in **Next.js**.
+Use this alongside [absolute imports and module path aliases](https://nextjs.org/docs/advanced-features/module-path-aliases) in **Next.js**.
 
-This can also be overridden in your local `.eslintrc` file, if needed:
+These aliases can also be customized in your local configuration file, if needed:
 
 ```jsx
 // .eslintrc
@@ -130,7 +143,7 @@ Import statement sorting is enabled via [`@ianvs/prettier-plugin-sort-imports`](
     "^react$",
     "<THIRD_PARTY_MODULES>",
     "",
-    "^(src|~)(/.*)$",
+    "^(src|~|@|#)(/.*)$",
     "",
     "^[.]"
   ]
@@ -144,7 +157,7 @@ import fs from 'node:fs';
 
 import { module } from 'package-name';
 
-import foo from 'src/foo';
+import foo from '@/foo';
 
 import main from '../index';
 import { bar } from './bar';
@@ -157,7 +170,7 @@ import fs from 'node:fs';
 
 import { module } from 'package-name';
 
-import foo from 'src/foo';
+import foo from '@/foo';
 
 import main from '../index';
 import { bar } from './bar';
@@ -167,38 +180,19 @@ See the plugin [docs](https://github.com/IanVS/prettier-plugin-sort-imports#impo
 
 ## Prettier
 
-This config supports Prettier integration out of the box. Rules that may conflict with ESLint are disabled via recommended configuration in [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier).
-
-If you wish to override any [Prettier options](https://prettier.io/docs/en/options.html), you can do so by specifying them under `prettier/prettier` rule in your ESLint config file. For example:
-
-```jsx
-// .eslintrc
-{
-  "extends": ["acme"],
-  "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "printWidth": 90
-      }
-    ]
-  }
-}
-```
-
-Make sure that these rules match the options specified in your Prettier config file.
+This config supports Prettier integration out of the box. Rules that may conflict with ESLint are disabled via [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier).
 
 ### Shared Config
 
-This package provides a shared Prettier config for use alongside the ESLint one.
+This package provides a shared Prettier config for use alongside ESLint.
 
 To enable, create a Prettier config file (`.prettierrc`, `.prettierrc.js`, etc.), and import the shared Prettier config.
 
 **JSON:**
 
-```json
+```jsx
 // .prettierrc
-"eslint-config-acme/prettier"
+'eslint-config-acme/prettier';
 ```
 
 **CommonJS:**
@@ -239,13 +233,24 @@ Add the following to your `package.json` file to define a script that will lint 
 }
 ```
 
+Or, if using Next.js:
+
+```jsx
+// package.json
+{
+  "scripts": {
+    "lint": "next lint"
+  }
+}
+```
+
 To fix all automatically-fixable issues, you can add the following script to your `package.json` as well (in addition to above):
 
 ```jsx
 // package.json
 {
   "scripts": {
-    "lint:fix": "eslint --ignore-path .gitignore --fix ."
+    "lint:fix": "npm run lint -- --fix"
   }
 }
 ```

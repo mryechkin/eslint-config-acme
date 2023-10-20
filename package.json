@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-acme",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "ESLint + Prettier config for React",
   "keywords": [
     "eslint",
@@ -23,17 +23,16 @@
     "url": "https://github.com/mryechkin"
   },
   "exports": {
-    ".": "./index.js",
+    ".": "./src/index.js",
     "./prettier": "./.prettierrc.json"
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "files": [
     "LICENSE",
     "CHANGELOG.md",
     "README.md",
     ".prettierrc.json",
-    "index.js",
-    "lib"
+    "src"
   ],
   "scripts": {
     "lint": "eslint --ignore-path .gitignore .",
@@ -45,13 +44,12 @@
   },
   "peerDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1",
-    "eslint": "^8.46",
+    "eslint": "^8.51",
     "eslint-config-airbnb": "^19.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-custom-alias": "^1.3.2",
     "eslint-plugin-import": "^2.28",
     "eslint-plugin-jsx-a11y": "^6.7",
-    "eslint-plugin-prettier": "^5.0",
     "eslint-plugin-react": "^7.33",
     "eslint-plugin-react-hooks": "^4.6",
     "eslint-plugin-sort-destructure-keys": "^1.5.0",

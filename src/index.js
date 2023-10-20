@@ -1,13 +1,8 @@
-const base = require('./lib/base.js');
-const react = require('./lib/react.js');
+const base = require('./rules/base.js');
+const react = require('./rules/react.js');
 
 module.exports = {
-  extends: [
-    'airbnb',
-    'airbnb/hooks',
-    'plugin:prettier/recommended',
-    'plugin:tailwindcss/recommended',
-  ],
+  extends: ['airbnb', 'airbnb/hooks', 'plugin:tailwindcss/recommended', 'prettier'],
   env: {
     browser: true,
     commonjs: true,
@@ -16,7 +11,7 @@ module.exports = {
     jest: true,
   },
   parserOptions: {
-    ecmaVersion: 2022,
+    ecmaVersion: 'latest',
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
@@ -34,7 +29,12 @@ module.exports = {
     },
     'import/resolver': {
       'eslint-import-resolver-custom-alias': {
-        alias: { src: './src' },
+        alias: {
+          '~': './src',
+          '@': './src',
+          '#': './src',
+          src: './src',
+        },
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
