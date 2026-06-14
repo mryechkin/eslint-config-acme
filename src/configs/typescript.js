@@ -8,7 +8,17 @@ import tsEslint from 'typescript-eslint';
 
 const gitIgnorePath = path.resolve(process.cwd(), '.gitignore');
 
-const extensions = ['.ts', '.tsx', '.cts', '.mts', '.mtsx'];
+const extensions = [
+  '.js',
+  '.jsx',
+  '.mjs',
+  '.mjsx',
+  '.cjs',
+  '.ts',
+  '.cts',
+  '.mts',
+  '.tsx',
+];
 
 const config = fixupConfigRules([
   ...(fs.existsSync(gitIgnorePath) ? [includeIgnoreFile(gitIgnorePath)] : []),

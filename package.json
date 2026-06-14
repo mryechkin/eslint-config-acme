@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-acme",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "ESLint + Prettier config for React",
   "keywords": [
     "eslint",
@@ -67,7 +67,8 @@
     "eslint": "^10.1.0",
     "husky": "^9.1.7",
     "prettier": "^3.8.1",
-    "prettier-plugin-packagejson": "^3.0.2"
+    "prettier-plugin-packagejson": "^3.0.2",
+    "typescript-eslint": "^8.61.0"
   },
   "peerDependencies": {
     "@eslint/compat": "^2.0.3",
